@@ -1,16 +1,29 @@
 ## Hi there 👋
 
-<!--
-**shankarpirajin/shankarpirajin** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+<!--# Hi, I'm Shankar 👋
 
-Here are some ideas to get you started:
+🚀 Aspiring AWS Cloud & DevOps Engineer
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## Certifications
+- Pega CSA Certified
+- Pega CSSA Certified
+
+## Currently Learning
+- AWS
+- Linux
+- Docker
+- Git & GitHub
+- CI/CD
+- SQL
+- Networking
+
+## Goals
+- Become a DevOps Engineer
+- Build Real-World Cloud Projects
+- Learn Automation & Cloud Deployment
+
+## Tech Stack
+AWS | Linux | Git | GitHub | Docker | SQL | VS Code
+
+## Connect With Me
+LinkedIn: https://www.linkedin.com/in/shankar-pirajin-59111a174
