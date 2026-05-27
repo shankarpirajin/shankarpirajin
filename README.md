@@ -33,4 +33,4 @@
 - Master Cloud Deployment
 
 ## 🔗 Connect With Me
-LinkedIn: https://www.linkedin.com/in/shankar-pirajin-59111a174
+LinkedIn: https://www.linkedin.com/in/shankar-pirajin/
