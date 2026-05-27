@@ -4,55 +4,64 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Shankar Pirajin S — Cloud & DevOps Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<!-- Clean Modern Typography Stack -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
   :root {
-    --bg: #070b14;
-    --surface: #0d1424;
-    --surface2: #111c30;
-    --border: #1e2f4a;
-    --accent: #00d4ff;
-    --accent2: #7c3aed;
-    --accent3: #10b981;
-    --text: #e2eaf5;
-    --muted: #6b82a0;
-    --heading: #ffffff;
+    --bg: #090d16;
+    --surface: rgba(255, 255, 255, 0.02);
+    --surface-hover: rgba(255, 255, 255, 0.05);
+    --border: rgba(255, 255, 255, 0.08);
+    --border-active: rgba(255, 255, 255, 0.2);
+    
+    --accent: #38bdf8;       /* Clean Sky Blue */
+    --accent-purple: #a78bfa;/* Pega Theme Violet */
+    --accent-green: #34d399; /* Success Mint */
+    
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     background: var(--bg);
-    color: var(--text);
-    font-family: 'IBM Plex Mono', monospace;
+    color: var(--text-secondary);
+    font-family: var(--font-sans);
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* Animated grid background */
+  /* Subtle background geometric grid matching reference site style */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background-image:
-      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    background-size: 40px 40px;
     pointer-events: none;
     z-index: 0;
   }
 
-  /* Glow orbs */
-  .orb {
+  /* Abstract background illumination sources */
+  .blur-light {
     position: fixed;
     border-radius: 50%;
-    filter: blur(80px);
+    filter: blur(140px);
     pointer-events: none;
     z-index: 0;
+    opacity: 0.4;
   }
-  .orb1 { width: 500px; height: 500px; background: rgba(0,212,255,0.06); top: -100px; left: -100px; }
-  .orb2 { width: 400px; height: 400px; background: rgba(124,58,237,0.07); bottom: 20%; right: -80px; }
-  .orb3 { width: 300px; height: 300px; background: rgba(16,185,129,0.05); top: 50%; left: 40%; }
+  .light-top { width: 400px; height: 400px; background: rgba(56, 189, 248, 0.15); top: -100px; right: -50px; }
+  .light-bottom { width: 500px; height: 500px; background: rgba(167, 139, 250, 0.1); bottom: -100px; left: -100px; }
 
+  /* NAVIGATION */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -60,238 +69,201 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.2rem 3rem;
-    background: rgba(7,11,20,0.8);
-    backdrop-filter: blur(12px);
+    padding: 1.5rem 4rem;
+    background: rgba(9, 13, 22, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
   }
 
   .nav-logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 1.1rem;
-    color: var(--accent);
-    letter-spacing: -0.02em;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.03em;
   }
+
+  .nav-logo span { color: var(--accent); }
 
   .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
     list-style: none;
   }
 
   .nav-links a {
-    color: var(--muted);
+    color: var(--text-secondary);
     text-decoration: none;
-    font-size: 0.78rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    transition: color 0.2s;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
   }
-  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover { color: var(--text-primary); }
 
   section {
     position: relative;
     z-index: 1;
-  }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 0 3rem;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 8rem 4rem 4rem 4rem;
   }
 
-  .hero-inner {
-    padding-top: 5rem;
+  /* HERO CANVAS */
+  .hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    padding-top: 4rem;
   }
 
   .hero-tag {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    background: rgba(0,212,255,0.08);
-    border: 1px solid rgba(0,212,255,0.2);
-    border-radius: 2px;
-    padding: 0.35rem 0.8rem;
-    font-size: 0.72rem;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    animation: fadeUp 0.6s ease both;
+    gap: 0.6rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
   }
 
-  .hero-tag::before {
-    content: '';
+  .hero-tag-dot {
     width: 6px; height: 6px;
-    background: var(--accent);
+    background: var(--accent-green);
     border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.8); }
+    box-shadow: 0 0 12px var(--accent-green);
   }
 
   .hero h1 {
-    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.5rem, 5.5vw, 4.8rem);
     font-weight: 800;
-    font-size: clamp(2.8rem, 6vw, 5.5rem);
-    line-height: 0.95;
-    color: var(--heading);
-    letter-spacing: -0.03em;
-    margin-bottom: 0.5rem;
-    animation: fadeUp 0.6s 0.1s ease both;
+    line-height: 1.1;
+    color: var(--text-primary);
+    letter-spacing: -0.04em;
+    margin-bottom: 1.5rem;
   }
 
   .hero h1 span {
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    background: linear-gradient(to right, #ffffff 30%, var(--accent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
   }
 
   .hero-sub {
-    font-size: 0.95rem;
-    color: var(--muted);
-    margin: 1.5rem 0 2.5rem;
-    max-width: 520px;
-    line-height: 1.7;
-    animation: fadeUp 0.6s 0.2s ease both;
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    max-width: 640px;
+    line-height: 1.6;
   }
 
   .hero-ctas {
     display: flex;
-    gap: 1rem;
-    animation: fadeUp 0.6s 0.3s ease both;
+    gap: 1.2rem;
+    margin-bottom: 5rem;
   }
 
   .btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.6rem;
-    border-radius: 2px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+    gap: 0.6rem;
+    padding: 0.9rem 2rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
     text-decoration: none;
-    cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .btn-primary {
-    background: var(--accent);
-    color: #000;
-    font-weight: 600;
+    background: var(--text-primary);
+    color: var(--bg);
   }
-  .btn-primary:hover { background: #33ddff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,212,255,0.3); }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(255, 255, 255, 0.15);
+  }
 
   .btn-outline {
     background: transparent;
-    color: var(--text);
+    color: var(--text-primary);
     border: 1px solid var(--border);
   }
-  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .btn-outline:hover {
+    border-color: var(--border-active);
+    background: rgba(255, 255, 255, 0.02);
+    transform: translateY(-2px);
+  }
 
   .hero-stats {
     display: flex;
-    gap: 3rem;
-    margin-top: 4rem;
-    animation: fadeUp 0.6s 0.4s ease both;
+    gap: 4rem;
+    border-top: 1px solid var(--border);
+    padding-top: 3rem;
   }
 
-  .stat-item { display: flex; flex-direction: column; gap: 0.25rem; }
+  .stat-item { display: flex; flex-direction: column; gap: 0.4rem; }
   .stat-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: var(--heading);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-family: var(--font-mono);
   }
   .stat-num span { color: var(--accent); }
-  .stat-label { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+  .stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* SECTION SHARED */
-  .section-wrap {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 6rem 3rem;
+  /* SECTION CORE DESIGN */
+  .section-header {
+    margin-bottom: 4rem;
   }
 
   .section-label {
-    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
     color: var(--accent);
-    letter-spacing: 0.15em;
     text-transform: uppercase;
-    margin-bottom: 0.6rem;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-  }
-  .section-label::after {
-    content: '';
-    flex: 1;
-    max-width: 60px;
-    height: 1px;
-    background: var(--accent);
-    opacity: 0.4;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.8rem;
+    display: block;
   }
 
   .section-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-    color: var(--heading);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
     letter-spacing: -0.02em;
-    margin-bottom: 3rem;
   }
 
-  /* SKILLS */
+  /* SKILLS CARDS GRID */
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 1.5rem;
   }
 
   .skill-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 1.8rem;
-    transition: border-color 0.2s, transform 0.2s;
-    position: relative;
-    overflow: hidden;
+    border-radius: 16px;
+    padding: 2.2rem;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .skill-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    opacity: 0;
-    transition: opacity 0.2s;
+  .skill-card:hover {
+    border-color: var(--border-active);
+    background: var(--surface-hover);
+    transform: translateY(-4px);
   }
-  .skill-card:hover { border-color: var(--accent); transform: translateY(-4px); }
-  .skill-card:hover::before { opacity: 1; }
 
-  .skill-card-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+  .skill-card-icon { font-size: 1.5rem; margin-bottom: 1.2rem; color: var(--text-primary); }
   .skill-card h3 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--heading);
-    margin-bottom: 1rem;
+    font-size: 1.15rem;
+    color: var(--text-primary);
+    margin-bottom: 1.2rem;
+    font-weight: 600;
   }
 
   .skill-tags {
@@ -301,518 +273,538 @@
   }
 
   .tag {
-    background: rgba(0,212,255,0.07);
-    border: 1px solid rgba(0,212,255,0.15);
-    color: var(--accent);
-    padding: 0.25rem 0.7rem;
-    border-radius: 2px;
-    font-size: 0.7rem;
-    letter-spacing: 0.04em;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    padding: 0.35rem 0.8rem;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  .skill-card:hover .tag {
+    border-color: rgba(255, 255, 255, 0.15);
   }
 
-  .tag.purple { background: rgba(124,58,237,0.07); border-color: rgba(124,58,237,0.2); color: #a78bfa; }
-  .tag.green { background: rgba(16,185,129,0.07); border-color: rgba(16,185,129,0.2); color: #34d399; }
-
-  /* CERTS */
+  /* CREDENTIALS SECTION */
   .certs-row {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 1.5rem;
-    flex-wrap: wrap;
   }
 
   .cert-card {
-    flex: 1;
-    min-width: 240px;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.2s, border-color 0.2s;
+    border-radius: 16px;
+    padding: 2.5rem;
+    transition: all 0.3s ease;
   }
-  .cert-card:hover { transform: translateY(-4px); border-color: var(--accent2); }
+  .cert-card:hover {
+    border-color: var(--border-active);
+    background: var(--surface-hover);
+  }
+
+  .cert-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+  }
 
   .cert-badge {
-    width: 48px; height: 48px;
-    background: linear-gradient(135deg, var(--accent2), #5b21b6);
-    border-radius: 8px;
+    width: 42px; height: 42px;
+    background: rgba(167, 139, 250, 0.1);
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.4rem;
-    margin-bottom: 1.2rem;
+    font-size: 1.2rem;
   }
-
-  .cert-card h3 {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--heading);
-    margin-bottom: 0.4rem;
+  .cert-card.aws .cert-badge {
+    background: rgba(56, 189, 248, 0.1);
   }
-
-  .cert-card p { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
 
   .cert-status {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    margin-top: 1rem;
+    font-family: var(--font-mono);
     font-size: 0.7rem;
-    color: var(--accent3);
-    letter-spacing: 0.06em;
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
     text-transform: uppercase;
+    font-weight: 500;
   }
-  .cert-status::before {
-    content: '';
-    width: 6px; height: 6px;
-    background: var(--accent3);
-    border-radius: 50%;
-  }
+  .status-active { background: rgba(52, 211, 153, 0.1); color: var(--accent-green); }
+  .status-progress { background: rgba(56, 189, 248, 0.1); color: var(--accent); }
 
-  /* PROJECTS */
+  .cert-card h3 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+  }
+  .cert-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+
+  /* PROJECTS INFRASTRUCTURE */
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: 1.5rem;
   }
 
   .project-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 1.8rem;
+    border-radius: 16px;
+    padding: 2.5rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    transition: border-color 0.2s, transform 0.2s;
+    justify-content: space-between;
+    min-height: 280px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .project-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .project-card:hover {
+    border-color: var(--border-active);
+    background: var(--surface-hover);
+    transform: translateY(-4px);
+  }
 
+  .project-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
   .project-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.65rem;
-    color: var(--accent);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
   }
 
   .project-card h3 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 1.05rem;
-    color: var(--heading);
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
   }
 
-  .project-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.65; flex: 1; }
+  .project-card p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 2rem; }
 
   .project-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 0.8rem;
+    padding-top: 1.2rem;
     border-top: 1px solid var(--border);
   }
 
   .project-lang {
-    font-size: 0.7rem;
-    color: var(--muted);
-    letter-spacing: 0.04em;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
   }
 
   .project-link {
-    font-size: 0.72rem;
-    color: var(--accent);
+    font-size: 0.85rem;
+    color: var(--text-primary);
     text-decoration: none;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    display: flex;
+    font-weight: 600;
+    display: inline-flex;
     align-items: center;
-    gap: 0.3rem;
+    gap: 0.4rem;
     transition: gap 0.2s;
   }
-  .project-link:hover { gap: 0.6rem; }
+  .project-link:hover { gap: 0.7rem; color: var(--accent); }
 
-  /* GOALS */
+  /* ENGINEERING ROADMAP / GOALS */
+  .goals-container {
+    max-width: 800px;
+  }
+
   .goals-list {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    max-width: 640px;
+    gap: 0.8rem;
   }
 
   .goal-item {
     display: flex;
-    align-items: flex-start;
-    gap: 1rem;
+    align-items: center;
+    gap: 1.2rem;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 4px;
+    border-radius: 12px;
     padding: 1.2rem 1.5rem;
-    transition: border-color 0.2s;
+    transition: all 0.2s ease;
   }
-  .goal-item:hover { border-color: var(--accent3); }
+  .goal-item:hover { border-color: var(--border-active); }
 
   .goal-check {
     width: 20px; height: 20px; flex-shrink: 0;
-    border: 2px solid var(--border);
-    border-radius: 3px;
-    margin-top: 1px;
-    position: relative;
-    transition: border-color 0.2s;
-  }
-
-  .goal-item.done .goal-check {
-    background: var(--accent3);
-    border-color: var(--accent3);
-  }
-  .goal-item.done .goal-check::after {
-    content: '✓';
-    position: absolute;
-    inset: 0;
+    border: 1.5px solid var(--border-active);
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.7rem;
-    color: #000;
-    font-weight: 700;
+    font-size: 0.75rem;
+    transition: all 0.2s;
+  }
+
+  .goal-item.done .goal-check {
+    background: var(--text-primary);
+    border-color: var(--text-primary);
+    color: var(--bg);
   }
 
   .goal-text {
-    font-size: 0.88rem;
-    color: var(--text);
-    line-height: 1.5;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    font-weight: 500;
   }
 
-  .goal-item.done .goal-text { text-decoration: line-through; color: var(--muted); }
+  .goal-item.done .goal-text {
+    color: var(--text-muted);
+    text-decoration: line-through;
+  }
 
-  /* CONTACT */
-  .contact-section {
+  /* TERMINAL HUB CONNECTIONS */
+  .contact-box {
     background: var(--surface);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .contact-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 5rem 3rem;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 4rem;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     gap: 3rem;
     flex-wrap: wrap;
   }
 
   .contact-text h2 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(1.6rem, 3vw, 2.4rem);
-    font-weight: 800;
-    color: var(--heading);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
     letter-spacing: -0.02em;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.8rem;
   }
-
-  .contact-text p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; max-width: 380px; }
+  .contact-text p { font-size: 1rem; color: var(--text-secondary); max-width: 440px; line-height: 1.6; }
 
   .contact-links {
     display: flex;
-    flex-direction: column;
     gap: 1rem;
+    flex-wrap: wrap;
   }
 
-  .contact-link-item {
+  .contact-card-link {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    color: var(--text);
+    gap: 0.8rem;
+    color: var(--text-primary);
     text-decoration: none;
-    font-size: 0.85rem;
-    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 1rem 1.5rem;
     border: 1px solid var(--border);
-    border-radius: 4px;
-    background: var(--bg);
-    transition: all 0.2s;
+    border-radius: 12px;
+    background: rgba(9, 13, 22, 0.4);
+    transition: all 0.2s ease;
   }
-  .contact-link-item:hover { border-color: var(--accent); color: var(--accent); transform: translateX(4px); }
-
-  .contact-link-item .icon {
-    width: 32px; height: 32px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1rem;
-    background: var(--surface2);
-    border-radius: 4px;
+  .contact-card-link:hover {
+    border-color: var(--border-active);
+    transform: translateY(-2px);
   }
 
-  /* FOOTER */
+  .contact-card-link .icon-frame {
+    font-size: 1.1rem;
+    color: var(--accent);
+  }
+
+  /* FOOTER ENGINE */
   footer {
     text-align: center;
-    padding: 2rem 3rem;
-    font-size: 0.72rem;
-    color: var(--muted);
-    letter-spacing: 0.06em;
-    z-index: 1;
-    position: relative;
+    padding: 4rem 2rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    margin-top: 4rem;
   }
+  footer span { color: var(--text-primary); }
 
-  footer span { color: var(--accent); }
-
-  /* SCROLL REVEAL */
+  /* SMOOTH REVEAL INTERACTION */
   .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
+  /* RESPONSIVE BREAKPOINTS */
+  @media (max-width: 968px) {
+    nav { padding: 1.2rem 2rem; }
+    section { padding: 6rem 2rem 3rem 2rem; }
+    .hero { min-height: auto; padding-top: 4rem; }
+    .contact-box { padding: 2.5rem; }
+  }
+
   @media (max-width: 640px) {
-    nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
-    .hero, .section-wrap { padding-left: 1.5rem; padding-right: 1.5rem; }
-    .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
-    .contact-inner { padding: 3rem 1.5rem; }
+    .hero-stats { gap: 2rem; flex-wrap: wrap; }
+    .hero h1 { font-size: 2.8rem; }
+    .contact-links { flex-direction: column; width: 100%; }
+    .contact-card-link { width: 100%; justify-content: center; }
   }
 </style>
 </head>
 <body>
 
-<div class="orb orb1"></div>
-<div class="orb orb2"></div>
-<div class="orb orb3"></div>
+<div class="blur-light light-top"></div>
+<div class="blur-light light-bottom"></div>
 
+<!-- Top Minimal Bar -->
 <nav>
-  <div class="nav-logo">shankar.dev</div>
+  <a href="#" class="nav-logo">shankar<span>.dev</span></a>
   <ul class="nav-links">
     <li><a href="#skills">Skills</a></li>
-    <li><a href="#certs">Certs</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#goals">Goals</a></li>
+    <li><a href="#certs">Credentials</a></li>
+    <li><a href="#projects">Systems</a></li>
+    <li><a href="#goals">Roadmap</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
+<!-- HERO COMPONENT -->
 <section>
   <div class="hero">
-    <div class="hero-inner">
-      <div class="hero-tag">Available for Cloud & DevOps Roles</div>
+    <div>
+      <div class="hero-tag">
+        <div class="hero-tag-dot"></div> Available for Cloud & DevOps Roles
+      </div>
       <h1>Shankar<br/><span>Pirajin S</span></h1>
       <p class="hero-sub">
-        Pega CSA & CSSA Certified engineer pivoting into Cloud & DevOps. Building expertise in AWS, Linux, Docker, and CI/CD pipelines. Based in Bengaluru 🇮🇳
+        Pega CSA & CSSA Certified engineer pivoting into Cloud & DevOps architecture. Structuring modular operations across AWS systems, Docker networks, and custom pipeline workflows. Based in Bengaluru 🇮🇳
       </p>
       <div class="hero-ctas">
-        <a href="https://www.linkedin.com/in/shankar-pirajin/" target="_blank" class="btn btn-primary">↗ LinkedIn</a>
-        <a href="https://github.com/shankarpirajin" target="_blank" class="btn btn-outline">⌥ GitHub</a>
+        <a href="https://www.linkedin.com/in/shankar-pirajin/" target="_blank" class="btn btn-primary">Connect on LinkedIn</a>
+        <a href="https://github.com/shankarpirajin" target="_blank" class="btn btn-outline">Explore Codebase</a>
       </div>
       <div class="hero-stats">
         <div class="stat-item">
           <div class="stat-num">2<span>×</span></div>
-          <div class="stat-label">Pega Certified</div>
+          <div class="stat-label">Pega Certifications</div>
         </div>
         <div class="stat-item">
           <div class="stat-num">4<span>+</span></div>
-          <div class="stat-label">Projects</div>
+          <div class="stat-label">System Deployments</div>
         </div>
         <div class="stat-item">
           <div class="stat-num">7<span>+</span></div>
-          <div class="stat-label">Technologies</div>
+          <div class="stat-label">Core Technologies</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SKILLS -->
+<!-- CORE COMPETENCIES -->
 <section id="skills">
-  <div class="section-wrap">
-    <div class="section-label reveal">Skills</div>
-    <h2 class="section-title reveal">What I Work With</h2>
-    <div class="skills-grid">
-      <div class="skill-card reveal">
-        <div class="skill-card-icon">☁️</div>
-        <h3>Cloud Platform</h3>
-        <div class="skill-tags">
-          <span class="tag">AWS EC2</span>
-          <span class="tag">AWS S3</span>
-          <span class="tag">AWS IAM</span>
-          <span class="tag">AWS VPC</span>
-          <span class="tag">Cloud Practitioner</span>
-        </div>
+  <div class="section-header reveal">
+    <span class="section-label">01 // Stack Overview</span>
+    <h2 class="section-title">Core Competencies</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">☁️</div>
+      <h3>Cloud Platforms</h3>
+      <div class="skill-tags">
+        <span class="tag">AWS EC2</span>
+        <span class="tag">AWS S3</span>
+        <span class="tag">AWS IAM</span>
+        <span class="tag">AWS VPC</span>
+        <span class="tag">Cloud Infrastructure</span>
       </div>
-      <div class="skill-card reveal">
-        <div class="skill-card-icon">🐧</div>
-        <h3>DevOps & Infra</h3>
-        <div class="skill-tags">
-          <span class="tag">Linux</span>
-          <span class="tag">Docker</span>
-          <span class="tag">CI/CD</span>
-          <span class="tag">GitHub Actions</span>
-          <span class="tag">Shell Scripting</span>
-        </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">⚙️</div>
+      <h3>DevOps Architecture</h3>
+      <div class="skill-tags">
+        <span class="tag">Linux Core</span>
+        <span class="tag">Docker Engines</span>
+        <span class="tag">CI/CD Flows</span>
+        <span class="tag">GitHub Actions</span>
+        <span class="tag">Shell Automation</span>
       </div>
-      <div class="skill-card reveal">
-        <div class="skill-card-icon">🟦</div>
-        <h3>Pega Platform</h3>
-        <div class="skill-tags">
-          <span class="tag purple">CSA</span>
-          <span class="tag purple">CSSA</span>
-          <span class="tag purple">BPM</span>
-          <span class="tag purple">Case Management</span>
-        </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">🔮</div>
+      <h3>Pega Systems</h3>
+      <div class="skill-tags">
+        <span class="tag">Pega CSA</span>
+        <span class="tag">Pega CSSA</span>
+        <span class="tag">BPM Workflows</span>
+        <span class="tag">Case Management</span>
       </div>
-      <div class="skill-card reveal">
-        <div class="skill-card-icon">💾</div>
-        <h3>Data & Code</h3>
-        <div class="skill-tags">
-          <span class="tag green">Python</span>
-          <span class="tag green">SQL / MySQL</span>
-          <span class="tag green">Git</span>
-          <span class="tag green">Jupyter</span>
-          <span class="tag green">VS Code</span>
-        </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">🗄️</div>
+      <h3>Data Logic</h3>
+      <div class="skill-tags">
+        <span class="tag">Python</span>
+        <span class="tag">MySQL / SQL</span>
+        <span class="tag">Git Controls</span>
+        <span class="tag">Jupyter Hub</span>
+        <span class="tag">VS Environment</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CERTIFICATIONS -->
+<!-- CREDENTIALS VERIFICATION -->
 <section id="certs">
-  <div class="section-wrap" style="padding-top:0">
-    <div class="section-label reveal">Certifications</div>
-    <h2 class="section-title reveal">Verified Credentials</h2>
-    <div class="certs-row">
-      <div class="cert-card reveal">
-        <div class="cert-badge">🏅</div>
-        <h3>Pega CSA</h3>
-        <p>Certified System Architect — validates foundational Pega platform skills including case design, data modeling, and UI configuration.</p>
-        <div class="cert-status">Certified</div>
+  <div class="section-header reveal">
+    <span class="section-label">02 // Verified Credentials</span>
+    <h2 class="section-title">Professional Milestones</h2>
+  </div>
+  <div class="certs-row">
+    <div class="cert-card reveal">
+      <div class="cert-header">
+        <div class="cert-badge">💼</div>
+        <span class="cert-status status-active">Certified</span>
       </div>
-      <div class="cert-card reveal">
-        <div class="cert-badge">🥇</div>
-        <h3>Pega CSSA</h3>
-        <p>Certified Senior System Architect — advanced certification covering complex application design, integrations, and performance optimization.</p>
-        <div class="cert-status">Certified</div>
+      <h3>Pega CSA</h3>
+      <p>Certified System Architect — Foundation architecture validation covering core case layout logic, data styling maps, and structural UI elements.</p>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-header">
+        <div class="cert-badge">👑</div>
+        <span class="cert-status status-active">Certified</span>
       </div>
-      <div class="cert-card reveal">
-        <div class="cert-badge">🎯</div>
-        <h3>AWS Cloud Practitioner</h3>
-        <p>Currently preparing for the AWS Cloud Practitioner exam to validate foundational cloud concepts and AWS core services.</p>
-        <div class="cert-status" style="color:var(--accent)">In Progress</div>
+      <h3>Pega CSSA</h3>
+      <p>Certified Senior System Architect — Advanced enterprise validation focused on application integration maps, security structures, and node optimization scales.</p>
+    </div>
+    <div class="cert-card aws reveal">
+      <div class="cert-header">
+        <div class="cert-badge">☁️</div>
+        <span class="cert-status status-progress">In Progress</span>
       </div>
+      <h3>AWS Cloud Practitioner</h3>
+      <p>Deepening functional cloud computing blueprints, handling distributed billing modules, core VPC routing configurations, and identity Access structures.</p>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- PRODUCTION SYSTEMS -->
 <section id="projects">
-  <div class="section-wrap" style="padding-top:0">
-    <div class="section-label reveal">Projects</div>
-    <h2 class="section-title reveal">Featured Work</h2>
-    <div class="projects-grid">
-      <div class="project-card reveal">
-        <div class="project-num">Project_01</div>
+  <div class="section-header reveal">
+    <span class="section-label">03 // Production Repositories</span>
+    <h2 class="section-title">Technical Implementations</h2>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <div class="project-top">
+        <div class="project-meta">
+          <span class="project-num">REPO // 01</span>
+        </div>
         <h3>PEGA Projects Extracts</h3>
-        <p>Real-time Pega application extracts showcasing live application design and business process automation using the Pega platform.</p>
-        <div class="project-footer">
-          <span class="project-lang">🟦 Pega Platform</span>
-          <a href="https://github.com/shankarpirajin/PEGA-Projects-Extracts" target="_blank" class="project-link">View →</a>
-        </div>
+        <p>Functional workflow extraction directories demonstrating active design patterns, routing configurations, and enterprise management trees on the Pega system matrix.</p>
       </div>
-      <div class="project-card reveal">
-        <div class="project-num">Project_02</div>
+      <div class="project-footer">
+        <span class="project-lang">Pega Blueprint</span>
+        <a href="https://github.com/shankarpirajin/PEGA-Projects-Extracts" target="_blank" class="project-link">Source ↗</a>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-top">
+        <div class="project-meta">
+          <span class="project-num">REPO // 02</span>
+        </div>
         <h3>IBM Water Quality ML</h3>
-        <p>Machine learning model for efficient water quality analysis and prediction — built during IBM program using Python and Jupyter Notebook.</p>
-        <div class="project-footer">
-          <span class="project-lang">🐍 Python / Jupyter</span>
-          <a href="https://github.com/shankarpirajin/IBM-Water-quality-ML-project" target="_blank" class="project-link">View →</a>
-        </div>
+        <p>High-accuracy computational evaluation systems tracking environmental parameters. Constructed inside unified Python processing trees using notebook structures.</p>
       </div>
-      <div class="project-card reveal">
-        <div class="project-num">Project_03</div>
-        <h3>FPGA Final Year Project</h3>
-        <p>Hardware design and implementation using FPGA technology — a digital systems final year engineering project.</p>
-        <div class="project-footer">
-          <span class="project-lang">⚙️ FPGA / Hardware</span>
-          <a href="https://github.com/shankarpirajin/FPGA-Final-year-project" target="_blank" class="project-link">View →</a>
+      <div class="project-footer">
+        <span class="project-lang">Python ML</span>
+        <a href="https://github.com/shankarpirajin/IBM-Water-quality-ML-project" target="_blank" class="project-link">Source ↗</a>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-top">
+        <div class="project-meta">
+          <span class="project-num">REPO // 03</span>
         </div>
+        <h3>FPGA Digital Pipeline</h3>
+        <p>Embedded systems design focusing on hardware register structures and execution timing profiles developed during graduation streams.</p>
+      </div>
+      <div class="project-footer">
+        <span class="project-lang">Hardware Design</span>
+        <a href="https://github.com/shankarpirajin/FPGA-Final-year-project" target="_blank" class="project-link">Source ↗</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- GOALS -->
+<!-- PIPELINE ROADMAP -->
 <section id="goals">
-  <div class="section-wrap" style="padding-top:0">
-    <div class="section-label reveal">Roadmap</div>
-    <h2 class="section-title reveal">2025–2026 Goals</h2>
+  <div class="section-header reveal">
+    <span class="section-label">04 // Operational Timeline</span>
+    <h2 class="section-title">Engineering Roadmap</h2>
+  </div>
+  <div class="goals-container">
     <div class="goals-list">
       <div class="goal-item done reveal">
-        <div class="goal-check"></div>
-        <div class="goal-text">Earn Pega CSA & CSSA certifications</div>
+        <div class="goal-check">✓</div>
+        <div class="goal-text">Secure Pega CSA & CSSA structural credentials</div>
       </div>
       <div class="goal-item done reveal">
-        <div class="goal-check"></div>
-        <div class="goal-text">Learn Linux fundamentals and shell scripting</div>
+        <div class="goal-check">✓</div>
+        <div class="goal-text">Establish core Linux workspace parameters and shell tracking</div>
       </div>
       <div class="goal-item done reveal">
-        <div class="goal-check"></div>
-        <div class="goal-text">Learn Docker and containerization</div>
+        <div class="goal-check">✓</div>
+        <div class="goal-text">Build container management modules via Docker</div>
       </div>
       <div class="goal-item reveal">
         <div class="goal-check"></div>
-        <div class="goal-text">Earn AWS Cloud Practitioner certification</div>
+        <div class="goal-text">Complete AWS Cloud Practitioner validation parameters</div>
       </div>
       <div class="goal-item reveal">
         <div class="goal-check"></div>
-        <div class="goal-text">Build and deploy real-world cloud projects on AWS</div>
+        <div class="goal-text">Build and deploy modern infrastructure architectures directly on AWS</div>
       </div>
       <div class="goal-item reveal">
         <div class="goal-check"></div>
-        <div class="goal-text">Master Kubernetes & Terraform for infrastructure automation</div>
-      </div>
-      <div class="goal-item reveal">
-        <div class="goal-check"></div>
-        <div class="goal-text">Contribute to open source DevOps projects</div>
-      </div>
-      <div class="goal-item reveal">
-        <div class="goal-check"></div>
-        <div class="goal-text">Land a Cloud / DevOps Engineer role</div>
+        <div class="goal-text">Master production orchestration via Kubernetes & Terraform networks</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" class="contact-section">
-  <div class="contact-inner">
-    <div class="contact-text reveal">
-      <h2>Let's Connect</h2>
-      <p>I'm actively looking for Cloud & DevOps opportunities. Open to collaborations, mentorship, or just a good tech conversation.</p>
+<!-- CONNECTION RUNNER -->
+<section id="contact">
+  <div class="contact-box reveal">
+    <div class="contact-text">
+      <h2>Initialize Connection</h2>
+      <p>Actively evaluating cloud operations, network deployments, and engineering pipelines. Let's start an exchange.</p>
     </div>
-    <div class="contact-links reveal">
-      <a href="https://www.linkedin.com/in/shankar-pirajin/" target="_blank" class="contact-link-item">
-        <div class="icon">💼</div>
-        linkedin.com/in/shankar-pirajin
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/shankar-pirajin/" target="_blank" class="contact-card-link">
+        <span class="icon-frame">💼</span> LinkedIn
       </a>
-      <a href="https://github.com/shankarpirajin" target="_blank" class="contact-link-item">
-        <div class="icon">⌥</div>
-        github.com/shankarpirajin
+      <a href="https://github.com/shankarpirajin" target="_blank" class="contact-card-link">
+        <span class="icon-frame">🔗</span> GitHub Profile
       </a>
-      <div class="contact-link-item" style="cursor:default">
-        <div class="icon">📍</div>
-        Bengaluru, India
+      <div class="contact-card-link" style="cursor: default;">
+        <span class="icon-frame">📍</span> Bengaluru, IN
       </div>
     </div>
   </div>
 </section>
 
+<!-- ENGINE SPEC COMPONENT -->
 <footer>
-  <p>Built with 💙 · <span>Shankar Pirajin S</span> · 2025</p>
+  <p>SYSTEM STATUS // 200 OK — CONNECTED AS <span>SHANKAR PIRAJIN S</span> — &copy; 2026</p>
 </footer>
 
 <script>
-  // Scroll reveal
+  // Clean scroll detection logic
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -820,14 +812,20 @@
         e.target.classList.add('visible');
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 
-  // Smooth scroll
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
+  // Structural menu anchors logic
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
       e.preventDefault();
-      document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        window.scrollTo({
+          top: target.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
     });
   });
 </script>
