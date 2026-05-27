@@ -1,6 +1,4 @@
-## Hi there 👋
-
-<!--# Hi, I'm Shankar 👋
+# Hi, I'm Shankar 👋
 
 🚀 Aspiring AWS Cloud & DevOps Engineer
 
